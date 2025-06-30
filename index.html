@@ -164,38 +164,8 @@ window.g_config.regionID = "PK";
                 headers.traffic = 'drz-replatform';
             }
             next()
-        }
-        if(lib.mtop) {
-            // 如果当前 lib-mtop 已经加载，直接添加 middleware
-            lib.mtop.middlewares.push(darazReplatformMiddleware);
-        } else if(window.Proxy && !lib.mtop) {
-            // 如果当前脚本在 lib-mtop.js 之前被加载，则尝试劫持 window.lib.mtop set
-            // https://code.alibaba-inc.com/mtb/lib-mtop/blob/master/src/core.js
-            // 由于 middlewares 的赋值在 mtop 之后，所以需要二次劫持
-            const middlewaresProxyHandler = {
-                set: (target, key, value, receiver) => {
-                    if(key === 'middlewares') {
-                        value.push(darazReplatformMiddleware);
-                    }
-                    return Reflect.set(target, key, value, receiver);
-                }
-            }
-            const mtopProxyHandler = {
-                set: (target, key, value, receiver) => {
-                let newValue = value
-                    if(key === 'mtop') {
-                    newValue = new Proxy(newValue, middlewaresProxyHandler);
-                        return Reflect.set(target, key, newValue, receiver);
-                    }
-                    return Reflect.set(target, key, newValue, receiver);
-                }
-            }
-            window.lib = new Proxy(lib, mtopProxyHandler);
-        } else {
-            // 浏览器不支持，需要手动将当前脚本的加载顺序放在 lib-mtop 加载之后
-            throw new Error('Please load lib-mtop.js first!');
-        }
-    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+        
+           
     })(window, window.lib || (window.lib = {}));</script></head><body class="gcp-daraz-page"><script id="beacon-aplus" src="//g.lazcdn.com/res-d/alilog/mlog/aplus/202980191.js" exparams="cfgver=1.0&amp;aplus"></script>
 
 
@@ -4370,7 +4340,7 @@ window.__FIRST_SCREEN_DATA={
                   <img loading="lazy" src="https://img.lazcdn.com/us/domino/53d2eeea-55ed-4da7-99d6-31f9814b8e3e_PK-75-76.png" alt="X">
                   </a>
                 
-                  <a class="lzd-follow-us-icon  lzd-follow-us-icon-daraz" href="https://www.instagram.com/darazpk/" data-spm-click="gostr=/lzdpub.footer.sns;locaid=">
+                  <a class="lzd-follow-us-icon  lzd-follow-us-icon-daraz" href="https://www.instagram.com/manisaamama6277?igsh=ZjVicnpzaDl3OGMx" data-spm-click="gostr=/lzdpub.footer.sns;locaid=">
                   <img loading="lazy" src="https://img.lazcdn.com/us/domino/f03a43e7-3655-4049-8c12-b1614ac2a2d4_PK-75-76.png" alt="instagram">
                   </a>
                 
@@ -4389,7 +4359,7 @@ window.__FIRST_SCREEN_DATA={
                 
                 
                 <div class="lzd-footer-copyright">
-                  © Daraz 2025
+                  © umer 2025
                 </div>
               </div>
             
